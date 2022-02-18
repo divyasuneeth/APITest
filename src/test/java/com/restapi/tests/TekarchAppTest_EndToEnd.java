@@ -46,8 +46,6 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 			}
 		}
 
-//		System.out.println(user.getUserid());
-//		System.out.println(user.getId());
 	}
 
 	@Test(dependsOnMethods = { "testAddUser" })
