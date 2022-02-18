@@ -3,7 +3,7 @@
 <suite name="APITesting">
    <test name="TekarchAppTesting">
        <classes>
-           <class name="com.restapi.tests.TekarchAppTest"/>
+           <class name="com.restapi.tests.TekarchAppTest_EndToEnd"/>
        </classes>
    </test>
 </suite>

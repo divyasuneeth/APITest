@@ -8,7 +8,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.restapi.basetest.BaseTest;
-import com.restapi.models.Login;
+import com.restapi.helpers.UserServiceHelper;
 import com.restapi.models.UserVO;
 import com.restapi.utility.GetValueObjects;
 
@@ -18,24 +18,21 @@ import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
-public class TekarchAppTest extends BaseTest {
+public class TekarchAppTest_EndToEnd extends BaseTest {
 
 	private static List<UserVO> listUser;
 	private static UserVO user;
 
 	@Test(priority = 0)
 	public void login() {
-		Login login = GetValueObjects.getLogin();
-		Response res = RestAssured.given().contentType(ContentType.JSON).body(login).post("/login");
+		Response res = UserServiceHelper.LoginToApplication();
 		res.then().time(Matchers.lessThan(3000L));
-		res.then().statusCode(201);
-		token = res.jsonPath().get("[0].token");
-
+		res.then().statusCode(201);	
 	}
 
 	@Test
-	public void getAllUser() {
-		Header header = new Header("token", token);
+ 	public void getAllUser() {
+		Header header = new Header("token", getToken());
 		RequestSpecification req = RestAssured.given();
 		req.header(header).contentType(ContentType.JSON);
 		Response res = req.get("/getdata");
@@ -44,11 +41,8 @@ public class TekarchAppTest extends BaseTest {
 	}
 
 	@Test
-	public void addUser() {
-		if (token == null)
-			login();
-		
-		Header header = new Header("token", token);
+	public void testAddUser() {
+		Header header = new Header("token", getToken());
 		user = GetValueObjects.getUser();
 		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).post("/addData");
 		res.then().statusCode(201);
@@ -67,10 +61,10 @@ public class TekarchAppTest extends BaseTest {
 		System.out.println(user.getId());
 	}
 
-	@Test(dependsOnMethods = { "addUser" })
-	public void deleteUser() {
+	@Test(dependsOnMethods = { "testAddUser" })
+	public void testDeleteUser() {
 
-		Header header = new Header("token", token);
+		Header header = new Header("token", getToken());
 		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user)
 				.delete("/deleteData");
 		res.then().statusCode(200);
@@ -79,9 +73,9 @@ public class TekarchAppTest extends BaseTest {
 
 	}
 
-	@Test(dependsOnMethods = { "addUser" },priority = 1)
-	public void updateUser() {
-		Header header = new Header("token", token);
+	@Test(dependsOnMethods = { "testAddUser" }, priority = 1)
+	public void testUpdateUser() {
+		Header header = new Header("token", getToken());
 		user.setSalary("7777");
 		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).put("/updateData");
 		res.then().statusCode(200);
