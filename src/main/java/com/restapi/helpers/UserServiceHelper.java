@@ -9,6 +9,7 @@ import com.restapi.utility.ReadPropertyFile;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
@@ -17,6 +18,7 @@ public class UserServiceHelper {
 	protected static Response res;
 	protected static RequestSpecification req;
 	protected static String token;
+	protected static UserVO user;
 
 	protected static String getBaseURI() {
 		return ReadPropertyFile.readProperty("baseURI");
@@ -30,26 +32,42 @@ public class UserServiceHelper {
 	}
 
 	protected static String getToken() {
-		if (token == null) 
+		if (token == null)
 			LoginToApplication();
-			
-	
+
 		return token;
 	}
 
 	protected static List<UserVO> getAllUserData() {
-		return null;
+		res = getUsers();
+		List<UserVO> listUser = res.jsonPath().getList("$", UserVO.class);
+		return listUser;
+	}
+
+	protected static Response getUsers() {
+		Header header = new Header("token", getToken());
+		RestAssured.given().header(header).contentType(ContentType.JSON).get("/getdata");
+
+		return res;
 	}
 
 	protected static Response addUser() {
+		Header header = new Header("token", getToken());
+		user = GetValueObjects.getUser();
+		res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).post("/addData");
 		return res;
 	}
 
 	protected static Response deleteUser() {
+		Header header = new Header("token", getToken());
+		res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).delete("/deleteData");
 		return res;
 	}
 
 	protected static Response updateUser() {
+		Header header = new Header("token", getToken());
+		user.setSalary("7777");
+		res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).put("/updateData");
 		return res;
 	}
 

@@ -10,45 +10,34 @@ import org.testng.annotations.Test;
 import com.restapi.basetest.BaseTest;
 import com.restapi.helpers.UserServiceHelper;
 import com.restapi.models.UserVO;
-import com.restapi.utility.GetValueObjects;
 
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
-import io.restassured.http.Header;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 
 public class TekarchAppTest_EndToEnd extends BaseTest {
-
-	private static List<UserVO> listUser;
-	private static UserVO user;
 
 	@Test(priority = 0)
 	public void login() {
 		Response res = UserServiceHelper.LoginToApplication();
 		res.then().time(Matchers.lessThan(3000L));
-		res.then().statusCode(201);	
+		res.then().statusCode(201);
 	}
 
 	@Test
- 	public void getAllUser() {
-		Header header = new Header("token", getToken());
-		RequestSpecification req = RestAssured.given();
-		req.header(header).contentType(ContentType.JSON);
-		Response res = req.get("/getdata");
+	public void getAllUser() {
+		Response res = UserServiceHelper.getUsers();
 		res.then().statusCode(200);
 
 	}
 
 	@Test
 	public void testAddUser() {
-		Header header = new Header("token", getToken());
-		user = GetValueObjects.getUser();
-		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).post("/addData");
+
+		Response res = UserServiceHelper.addUser();
 		res.then().statusCode(201);
 		res.then().body(containsString("success"));
-		res = RestAssured.given().header(header).get("/getdata");
-		listUser = res.jsonPath().getList("$", UserVO.class);
+		
+		List<UserVO> listUser = UserServiceHelper.getAllUserData();
+
 		for (UserVO u : listUser) {
 			if (u.getAccountno().equalsIgnoreCase(user.getAccountno())) {
 				user.setUserid(u.getUserid());
@@ -57,16 +46,14 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 			}
 		}
 
-		System.out.println(user.getUserid());
-		System.out.println(user.getId());
+//		System.out.println(user.getUserid());
+//		System.out.println(user.getId());
 	}
 
 	@Test(dependsOnMethods = { "testAddUser" })
 	public void testDeleteUser() {
 
-		Header header = new Header("token", getToken());
-		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user)
-				.delete("/deleteData");
+		Response res = UserServiceHelper.deleteUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().body(containsString("success"));
@@ -75,15 +62,13 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 
 	@Test(dependsOnMethods = { "testAddUser" }, priority = 1)
 	public void testUpdateUser() {
-		Header header = new Header("token", getToken());
-		user.setSalary("7777");
-		Response res = RestAssured.given().header(header).contentType(ContentType.JSON).body(user).put("/updateData");
+		Response res = UserServiceHelper.updateUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().body(containsString("success"));
 
-		res = RestAssured.given().header(header).get("/getdata");
-		listUser = res.jsonPath().getList("$", UserVO.class);
+		
+		List<UserVO> listUser = UserServiceHelper.getAllUserData();
 		for (UserVO u : listUser) {
 			if (u.getAccountno().equalsIgnoreCase(user.getAccountno())) {
 				System.out.println(u.toString());
