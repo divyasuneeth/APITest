@@ -2,32 +2,32 @@
 <testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="24580" started-at="2022-02-18T13:04:13 PST" finished-at="2022-02-18T13:04:38 PST">
+  <suite name="Default suite" duration-ms="32310" started-at="2022-02-18T14:26:11 PST" finished-at="2022-02-18T14:26:43 PST">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="24580" started-at="2022-02-18T13:04:13 PST" finished-at="2022-02-18T13:04:38 PST">
+    <test name="Default test" duration-ms="32310" started-at="2022-02-18T14:26:11 PST" finished-at="2022-02-18T14:26:43 PST">
       <class name="com.restapi.tests.TekarchAppTest_EndToEnd">
-        <test-method status="PASS" signature="setUp()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="setUp" is-config="true" duration-ms="307" started-at="2022-02-18T13:04:14 PST" finished-at="2022-02-18T13:04:14 PST">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="setUp" is-config="true" duration-ms="332" started-at="2022-02-18T14:26:11 PST" finished-at="2022-02-18T14:26:11 PST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="getAllUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="getAllUser" duration-ms="6161" started-at="2022-02-18T13:04:14 PST" finished-at="2022-02-18T13:04:20 PST">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- getAllUser -->
-        <test-method status="PASS" signature="login()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="login" duration-ms="257" started-at="2022-02-18T13:04:20 PST" finished-at="2022-02-18T13:04:20 PST">
+        <test-method status="PASS" signature="login()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="login" duration-ms="2182" started-at="2022-02-18T14:26:11 PST" finished-at="2022-02-18T14:26:13 PST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- login -->
-        <test-method status="PASS" signature="testAddUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testAddUser" duration-ms="8194" started-at="2022-02-18T13:04:20 PST" finished-at="2022-02-18T13:04:28 PST">
+        <test-method status="PASS" signature="testAddUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testAddUser" duration-ms="13133" started-at="2022-02-18T14:26:13 PST" finished-at="2022-02-18T14:26:27 PST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddUser -->
-        <test-method status="PASS" signature="testDeleteUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testDeleteUser" duration-ms="2282" started-at="2022-02-18T13:04:28 PST" depends-on-methods="com.restapi.tests.TekarchAppTest_EndToEnd.testAddUser" finished-at="2022-02-18T13:04:31 PST">
+        <test-method status="PASS" signature="testDeleteUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testDeleteUser" duration-ms="2262" started-at="2022-02-18T14:26:27 PST" depends-on-methods="com.restapi.tests.TekarchAppTest_EndToEnd.testAddUser" finished-at="2022-02-18T14:26:29 PST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testDeleteUser -->
-        <test-method status="PASS" signature="testUpdateUser()[pri:1, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testUpdateUser" duration-ms="7343" started-at="2022-02-18T13:04:31 PST" depends-on-methods="com.restapi.tests.TekarchAppTest_EndToEnd.testAddUser" finished-at="2022-02-18T13:04:38 PST">
+        <test-method status="PASS" signature="testGetAllUser()[pri:0, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testGetAllUser" duration-ms="5941" started-at="2022-02-18T14:26:29 PST" finished-at="2022-02-18T14:26:35 PST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetAllUser -->
+        <test-method status="PASS" signature="testUpdateUser()[pri:1, instance:com.restapi.tests.TekarchAppTest_EndToEnd@2a556333]" name="testUpdateUser" duration-ms="8424" started-at="2022-02-18T14:26:35 PST" depends-on-methods="com.restapi.tests.TekarchAppTest_EndToEnd.testAddUser" finished-at="2022-02-18T14:26:43 PST">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testUpdateUser -->

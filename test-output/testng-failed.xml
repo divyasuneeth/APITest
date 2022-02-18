@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.restapi.tests.TekarchAppTest">
+      <class name="com.restapi.tests.TekarchAppTest_EndToEnd">
         <methods>
           <include name="setUp"/>
-          <include name="updateUser"/>
-          <include name="addUser"/>
+          <include name="testDeleteUser"/>
+          <include name="testGetAllUser"/>
+          <include name="testUpdateUser"/>
+          <include name="login"/>
+          <include name="testAddUser"/>
         </methods>
-      </class> <!-- com.restapi.tests.TekarchAppTest -->
+      </class> <!-- com.restapi.tests.TekarchAppTest_EndToEnd -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
