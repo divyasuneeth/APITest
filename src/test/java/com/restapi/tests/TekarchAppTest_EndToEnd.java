@@ -23,7 +23,7 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 	}
 
 	@Test
-	public void getAllUser() {
+	public void testGetAllUser() {
 		Response res = UserServiceHelper.getUsers();
 		res.then().statusCode(200);
 

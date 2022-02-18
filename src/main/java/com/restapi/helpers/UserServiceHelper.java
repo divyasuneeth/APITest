@@ -46,7 +46,7 @@ public class UserServiceHelper {
 
 	protected static Response getUsers() {
 		Header header = new Header("token", getToken());
-		RestAssured.given().header(header).contentType(ContentType.JSON).get("/getdata");
+		res = RestAssured.given().header(header).contentType(ContentType.JSON).get("/getdata");
 
 		return res;
 	}
