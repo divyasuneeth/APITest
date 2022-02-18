@@ -1,4 +1,4 @@
-package com.restapi.pojo;
+package com.restapi.models;
 
 public class Login {
 	private String username;

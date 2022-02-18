@@ -2,6 +2,8 @@ package com.restapi.basetest;
 
 import org.testng.annotations.BeforeClass;
 
+import com.restapi.utility.ReadPropertyFile;
+
 import io.restassured.RestAssured;
 
 public class BaseTest {
@@ -9,7 +11,7 @@ public class BaseTest {
 	
 	@BeforeClass
 	public void setUp() {
-		RestAssured.baseURI = "https://us-central1-qa01-tekarch-accmanager.cloudfunctions.net";
+		RestAssured.baseURI = ReadPropertyFile.readProperty("baseURI");
 	}
 	
 }

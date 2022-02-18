@@ -1,7 +1,7 @@
 package com.restapi.utility;
 
-import com.restapi.pojo.Login;
-import com.restapi.pojo.UserVO;
+import com.restapi.models.Login;
+import com.restapi.models.UserVO;
 
 public class GetValueObjects {
 
@@ -17,8 +17,9 @@ public class GetValueObjects {
 
 	public static Login getLogin() {
 		Login login = new Login();
-		login.setUsername("shinkynambiar@ta.com");
-		login.setPassword("divya@123");
+		
+		login.setUsername(ReadPropertyFile.readProperty("username"));
+		login.setPassword(ReadPropertyFile.readProperty("password"));
 		return login;
 	}
 }

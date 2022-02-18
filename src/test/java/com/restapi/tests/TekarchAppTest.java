@@ -8,8 +8,8 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
 import com.restapi.basetest.BaseTest;
-import com.restapi.pojo.Login;
-import com.restapi.pojo.UserVO;
+import com.restapi.models.Login;
+import com.restapi.models.UserVO;
 import com.restapi.utility.GetValueObjects;
 
 import io.restassured.RestAssured;
