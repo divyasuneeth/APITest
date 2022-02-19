@@ -2,13 +2,10 @@ package com.restapi.CRUD;
 
 import static org.hamcrest.CoreMatchers.containsString;
 
-import java.util.List;
-
 import org.testng.annotations.Test;
 
 import com.restapi.basetest.BaseTest;
 import com.restapi.helpers.UserServiceHelper;
-import com.restapi.models.UserVO;
 
 import io.restassured.response.Response;
 

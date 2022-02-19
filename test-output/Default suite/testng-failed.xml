@@ -3,16 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.restapi.tests.TekarchAppTest_EndToEnd">
+      <class name="com.restapi.CRUD.testDeleteUser">
         <methods>
           <include name="setUp"/>
-          <include name="testDeleteUser"/>
-          <include name="testGetAllUser"/>
-          <include name="testUpdateUser"/>
-          <include name="login"/>
-          <include name="testAddUser"/>
+          <include name="deleteUser_TC"/>
         </methods>
-      </class> <!-- com.restapi.tests.TekarchAppTest_EndToEnd -->
+      </class> <!-- com.restapi.CRUD.testDeleteUser -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
