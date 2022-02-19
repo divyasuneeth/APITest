@@ -11,8 +11,8 @@ public class testGetUsers extends BaseTest {
 
 	@Test
 	public void getAllUser_TC() {
-		Response res = UserServiceHelper.LoginToApplication();
-		res = UserServiceHelper.getUsers();
+		Response res = LoginToApplication();
+		res = getUsers();
 		res.then().statusCode(200);
 
 	}

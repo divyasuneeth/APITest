@@ -17,14 +17,14 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 
 	@Test(priority = 0)
 	public void login() {
-		Response res = UserServiceHelper.LoginToApplication();
+		Response res = LoginToApplication();
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().statusCode(201);
 	}
 
 	@Test
 	public void testGetAllUser() {
-		Response res = UserServiceHelper.getUsers();
+		Response res = getUsers();
 		res.then().statusCode(200);
 
 	}
@@ -32,11 +32,11 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 	@Test
 	public void testAddUser() {
 
-		Response res = UserServiceHelper.addUser();
+		Response res = addUser();
 		res.then().statusCode(201);
 		res.then().body(containsString("success"));
 		
-		List<UserVO> listUser = UserServiceHelper.getAllUserData();
+		List<UserVO> listUser = getAllUserData();
 
 		for (UserVO u : listUser) {
 			if (u.getAccountno().equalsIgnoreCase(user.getAccountno())) {
@@ -51,7 +51,7 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 	@Test(dependsOnMethods = { "testAddUser" })
 	public void testDeleteUser() {
 
-		Response res = UserServiceHelper.deleteUser();
+		Response res = deleteUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().body(containsString("success"));
@@ -60,13 +60,13 @@ public class TekarchAppTest_EndToEnd extends BaseTest {
 
 	@Test(dependsOnMethods = { "testAddUser" }, priority = 1)
 	public void testUpdateUser() {
-		Response res = UserServiceHelper.updateUser();
+		Response res = updateUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().body(containsString("success"));
 
 		
-		List<UserVO> listUser = UserServiceHelper.getAllUserData();
+		List<UserVO> listUser = getAllUserData();
 		for (UserVO u : listUser) {
 			if (u.getAccountno().equalsIgnoreCase(user.getAccountno())) {
 				System.out.println(u.toString());

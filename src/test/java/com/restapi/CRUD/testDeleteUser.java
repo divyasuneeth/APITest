@@ -14,9 +14,9 @@ import io.restassured.response.Response;
 public class testDeleteUser extends BaseTest {
 	@Test
 	public void deleteUser_TC() {
-		Response res = UserServiceHelper.LoginToApplication();
+		Response res = LoginToApplication();
 		user = ReusableMethod.getUserFromResponse();
-		res = UserServiceHelper.deleteUser();
+		res = deleteUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(5000L));
 		res.then().body(containsString("success"));

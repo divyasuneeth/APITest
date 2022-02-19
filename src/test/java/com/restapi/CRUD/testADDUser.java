@@ -12,8 +12,8 @@ import io.restassured.response.Response;
 public class testADDUser extends BaseTest {
 	@Test
 	public void addUser_TC() {
-		Response res = UserServiceHelper.LoginToApplication();
-		res = UserServiceHelper.addUser();
+		Response res = LoginToApplication();
+		res = addUser();
 		res.then().statusCode(201);
 		res.then().body(containsString("success"));
 

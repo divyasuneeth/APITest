@@ -16,9 +16,9 @@ public class testUpdateUser extends BaseTest {
 	@Test
 	public void updateUser_TC() {
 
-		Response res = UserServiceHelper.LoginToApplication();
+		Response res = LoginToApplication();
 		user = ReusableMethod.getUserFromResponse();
-		res=UserServiceHelper.updateUser();
+		res=updateUser();
 		res.then().statusCode(200);
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().body(containsString("success"));
