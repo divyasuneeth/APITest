@@ -11,7 +11,7 @@ import io.restassured.response.Response;
 public class testLogin extends BaseTest{
 	
 	@Test(priority = 0)
-	public void login() {
+	public void login_TC() {
 		Response res = UserServiceHelper.LoginToApplication();
 		res.then().time(Matchers.lessThan(3000L));
 		res.then().statusCode(201);

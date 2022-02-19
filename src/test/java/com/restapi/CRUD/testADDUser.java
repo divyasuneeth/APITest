@@ -14,21 +14,11 @@ import io.restassured.response.Response;
 
 public class testADDUser extends BaseTest {
 	@Test
-	public void testAddUser() {
-
-		Response res = UserServiceHelper.addUser();
+	public void addUser_TC() {
+		Response res = UserServiceHelper.LoginToApplication();
+		res = UserServiceHelper.addUser();
 		res.then().statusCode(201);
 		res.then().body(containsString("success"));
-
-		List<UserVO> listUser = UserServiceHelper.getAllUserData();
-
-		for (UserVO u : listUser) {
-			if (u.getAccountno().equalsIgnoreCase(user.getAccountno())) {
-				user.setUserid(u.getUserid());
-				user.setId(u.getId());
-
-			}
-		}
 
 //		System.out.println(user.getUserid());
 //		System.out.println(user.getId());

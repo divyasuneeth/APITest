@@ -10,8 +10,9 @@ import io.restassured.response.Response;
 public class testGetUsers extends BaseTest {
 
 	@Test
-	public void testGetAllUser() {
-		Response res = UserServiceHelper.getUsers();
+	public void getAllUser_TC() {
+		Response res = UserServiceHelper.LoginToApplication();
+		res = UserServiceHelper.getUsers();
 		res.then().statusCode(200);
 
 	}
